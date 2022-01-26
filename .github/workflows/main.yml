@@ -36,12 +36,12 @@ jobs:
       - name: Build AMI for AWS
         working-directory: ./aws/
         env: 
-          AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ env.AWS_SESSION_TOKEN }}
-          AWS_SESSION_EXPIRATION: ${{ env.AWS_SESSION_EXPIRATION }}
-          HCP_CLIENT_ID: ${{ env.HCP_CLIENT_ID }}
-          HCP_CLIENT_SECRET: ${{ env.HCP_CLIENT_SECRET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+          AWS_SESSION_EXPIRATION: ${{ secrets.AWS_SESSION_EXPIRATION }}
+          HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
+          HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
         run: |
           echo Running Packer Build
           /usr/bin/packer init .
