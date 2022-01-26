@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build Ubuntu 20.04 Image
 
 # Controls when the workflow will run
 on:
@@ -37,4 +37,5 @@ jobs:
         working-directory: aws/
         run: |
           echo Running Packer Build
+          /usr/bin/packer init
           /usr/bin/packer build ubuntu_20_04.pkr.hcl 
