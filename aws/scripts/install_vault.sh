@@ -8,3 +8,5 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 echo "Install Vault binary with apt"
 sudo apt update
 sudo apt install vault -y 
+
+echo "Completed Vaultu Installation"
