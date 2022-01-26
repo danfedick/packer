@@ -34,7 +34,7 @@ jobs:
           sudo apt-get update && sudo apt-get install packer
       # Runs a set of commands using the runners shell
       - name: Build AMI for AWS
-        working-directory: ./aws/
+        working-directory: aws/
         run: |
           echo Running Packer Build
-          packer build ./ubuntu_20_04.pkr.hcl 
+          /usr/bin/packer build ubuntu_20_04.pkr.hcl 
