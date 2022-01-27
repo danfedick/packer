@@ -35,6 +35,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Packer
         run: |
+          echo AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
           echo Install Packer
           curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
