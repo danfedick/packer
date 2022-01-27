@@ -10,7 +10,7 @@ packer {
 data "amazon-ami" "ubuntu-focal-east" {
   region = "us-east-2"
   filters = {
-    name                = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+    name                = "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*"
     root-device-type    = "ebs"
     virtualization-type = "hvm"
   }
@@ -30,7 +30,7 @@ source "amazon-ebs" "ubuntu-focal-east" {
 data "amazon-ami" "ubuntu-focal-west" {
   region = "us-west-2"
   filters = {
-    name                = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+    name                = "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*"
     root-device-type    = "ebs"
     virtualization-type = "hvm"
   }

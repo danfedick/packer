@@ -6,8 +6,7 @@
 #######################################
       
 echo "Installing System Packages"
-sudo apt-get update && \
-sudo apt-get -y install software-properties-common
+sudo apt-get update && sudo apt-get -y install software-properties-common
 
 
 
