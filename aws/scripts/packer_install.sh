@@ -6,7 +6,10 @@
 #######################################
       
 echo "Installing System Packages"
-sudo apt-get update && sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common 
+sudo apt-get update && \
+sudo apt-get -y install software-properties-common
+
+
 
 echo "Installing Docker-Compose"
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
