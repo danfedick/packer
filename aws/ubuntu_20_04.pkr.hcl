@@ -70,6 +70,6 @@ This is the Ubuntu 20.04 image being published to NGC-JCO Packer Registry.
   ]
 
   provisioner "shell" {
-    script       = "./scripts/packer_install.sh"
+    script = "./scripts/packer_install.sh"
   }
 }
