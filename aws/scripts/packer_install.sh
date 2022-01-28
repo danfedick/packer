@@ -12,19 +12,6 @@ echo "Adding Vault repo"
 sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 
-echo "Install Vault binary with apt"
-sudo apt-get update && sudo apt-get install vault -y 
-
-echo "Completed Vault Installation"
-
-echo "Install Consul Binary"
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install vault 
 sudo apt-get update && sudo apt-get install consul
-
-
-echo "Install Nomad Binary"
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt-get update && sudo apt-get install nomad 
-
