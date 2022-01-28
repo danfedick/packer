@@ -72,4 +72,14 @@ This is the Ubuntu 20.04 image being published to NGC-JCO Packer Registry.
   provisioner "shell" {
     script = "./scripts/node_configure.sh"
   }
+  provisioner "shell" {
+    inline = ["sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -"]
+  }
+  provisioner "shell" {
+    inline = ['sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"']
+  }
+  provisioner "shell" {
+    inline = ['sudo apt-get install vault']
+  }
+
 }
