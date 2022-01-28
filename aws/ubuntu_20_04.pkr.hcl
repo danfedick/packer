@@ -54,13 +54,13 @@ build {
 This is the Ubuntu 20.04 image being published to NGC-JCO Packer Registry.
     EOT
     bucket_labels = {
-      "organization" = "ngc",
-      "team"         = "jco",
+      "organization" = "demoland",
+      "team"         = "Logs4Jay",
       "os"           = "Ubuntu 20.04"
     }
     build_labels = {
-      "organization" = "ngc",
-      "team"         = "jco",
+      "organization" = "demoland",
+      "team"         = "Logs4Jay",
       "os"           = "Ubuntu 20.04"
     }
   }
