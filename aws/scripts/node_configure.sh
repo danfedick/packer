@@ -10,7 +10,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 echo "Adding Vault repo"
 sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && sudo apt-get update
-sudo apt-get install vault 
-sudo apt-get install consul
-sudo apt-get install nomad 
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
+  sudo apt-get update && \
+  sudo apt-get install consul nomad vault
