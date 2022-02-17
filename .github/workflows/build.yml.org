@@ -36,6 +36,10 @@ jobs:
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
           HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
         run: |
-          /usr/local/bin/aws s3 ls s3://
-
+          mkdir ~/.aws
+          echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" > ~/.aws/credentials
+          echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+          echo "aws_session_token=$AWS_SESSION_TOKEN" >> ~/.aws/credentials
+          /usr/bin/packer init .
+          /usr/bin/packer build ubuntu_20_04.pkr.hcl 
 
