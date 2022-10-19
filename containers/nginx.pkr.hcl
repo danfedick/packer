@@ -1,5 +1,5 @@
 # Variables
-variable "dockerhub_pat" {
+variable "login_password" {
   type = string
 }
 
@@ -31,7 +31,7 @@ build {
     post-processor "docker-push" {
       login = true
       login_username = "danfedick"
-      login_password = "${var.dockerhub_pat}"
+      login_password = "${var.login_password}"
     }
   }
 }
