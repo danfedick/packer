@@ -1,7 +1,7 @@
 # Variables
-#variable "dockerhub_pat" {
-#  type = string
-#}
+variable "dockerhub_pat" {
+  type = string
+}
 
 # Source
 source "docker" "alpine" {
@@ -31,6 +31,7 @@ build {
     post-processor "docker-push" {
       login = true
       login_username = "danfedick"
+      login_password = "${var.dockerhub_pat}"
     }
   }
 }

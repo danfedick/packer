@@ -26,6 +26,5 @@ jobs:
 
       - name: Build Packer
         run: |
-          docker login -u danfedick -p ${{ secrets.DOCKERHUB_PAT }}
           cd containers
-          packer build ./nginx.pkr.hcl
+          packer build ./nginx.pkr.hcl -var "dockerhub_pat=${{ secrets.DOCKERHUB_PAT }}"
