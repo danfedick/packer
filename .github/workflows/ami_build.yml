@@ -1,6 +1,6 @@
 ---
 
-name: Packer
+name: Ubuntu 20.04 AMI Build
 
 on:
   push:
