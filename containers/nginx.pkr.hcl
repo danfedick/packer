@@ -29,7 +29,7 @@ build {
       tags       = ["1.0"]
     }
     post-processor "docker-push" {
-      login = true
+      #login = true
       login_username = "danfedick"
       login_password = var.dockerhub_pat
     }
