@@ -1,0 +1,30 @@
+---
+
+name: NGINX Container Build
+
+on:
+  push:
+
+jobs:
+  packer:
+    runs-on: ubuntu-latest
+    name: packer
+    env:
+      access_key: ${{ secrets.dockerhub_pat }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+    # Install Packer
+      - name: Install Packer
+        run: |
+          sudo apt-get update 
+          sudo apt-get install -y curl unzip
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install packer
+      - name: Build Packer
+        run: |
+          cd containers
+          packer build \
+            -var "dockerhub_pat=${{ secrets.dockerhub_pat }}"  ./nginx.pkr.hcl
