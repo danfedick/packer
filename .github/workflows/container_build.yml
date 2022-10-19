@@ -9,6 +9,8 @@ jobs:
   packer:
     runs-on: ubuntu-latest
     name: packer
+    env: 
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -24,7 +26,6 @@ jobs:
 
       - name: Build Packer
         shell: bash
-        env: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: |
           cd containers
           packer build ./nginx.pkr.hcl -var "login_password=$DOCKERHUB_PASSWORD"
