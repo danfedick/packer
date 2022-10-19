@@ -1,11 +1,9 @@
+# Variables
 variable "dockerhub_pat" {
-  type = "string"
-  value = "xxx"
+  type = string
 }
 
-# This is a very simple example workflow for pulling a container
-# and testing a docker push with Packer.
-
+# Source
 source "docker" "alpine" {
   image  = "alpine:latest"
   commit = true
