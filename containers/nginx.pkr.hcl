@@ -1,7 +1,3 @@
-# Variables
-variable "login_password" {
-  type = string
-}
 
 # Source
 source "docker" "alpine" {
@@ -30,8 +26,6 @@ build {
     }
     post-processor "docker-push" {
       login = true
-      login_username = "danfedick"
-      login_password = "${var.login_password}"
     }
   }
 }

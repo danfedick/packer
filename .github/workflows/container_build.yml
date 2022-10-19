@@ -28,6 +28,5 @@ jobs:
         shell: bash
         run: |
           cd containers
-          packer build \
-            -var "login_password=$DOCKERHUB_PASSWORD" \
-            ./nginx.pkr.hcl
+          docker login -u danfedick -p $DOCKERHUB_PASSWORD"
+          packer build ./nginx.pkr.hcl
