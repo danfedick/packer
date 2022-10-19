@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           cd containers
-          docker login --user danfedick --password $DOCKERHUB_PASSWORD
+          docker login --username danfedick --password $DOCKERHUB_PASSWORD
           packer build ./nginx.pkr.hcl
