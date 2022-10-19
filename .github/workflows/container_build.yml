@@ -28,4 +28,6 @@ jobs:
         shell: bash
         run: |
           cd containers
-          packer build ./nginx.pkr.hcl -var "login_password=$DOCKERHUB_PASSWORD"
+          packer build \
+            -var "login_password=$DOCKERHUB_PASSWORD" \
+            ./nginx.pkr.hcl
