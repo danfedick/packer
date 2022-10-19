@@ -27,4 +27,4 @@ jobs:
       - name: Build Packer
         run: |
           cd containers
-          packer build ./nginx.pkr.hcl -var "login_password=${{ secrets.DOCKEHUB_PASSWORD }}"
+          packer build ./nginx.pkr.hcl -var "login_password=$login_password"
