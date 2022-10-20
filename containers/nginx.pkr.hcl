@@ -1,4 +1,4 @@
-variable "docker_password" {
+variable "dockerhub_password" {
   type = string
 }
 
