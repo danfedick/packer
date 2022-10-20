@@ -27,13 +27,13 @@ build {
   post-processors {
     post-processor "docker-tag" {
       # repository = "danfedick/nginx"
-      repository = var.push_repo
+      repository = "${var.push_repo}"
       tags       = ["1.0"]
     }
     post-processor "docker-push" {
       login          = true
-      login_username = var.dockerhub_username
-      login_password = var.dockerhub_password
+      login_username = "${var.dockerhub_username}"
+      login_password = "${var.dockerhub_password}"
     }
   }
 }
