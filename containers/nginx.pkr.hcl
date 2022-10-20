@@ -1,3 +1,4 @@
+# Variable
 variable "dockerhub_password" {
   type = string
 }
@@ -12,6 +13,8 @@ source "docker" "alpine" {
     "LABEL author=\"Dan Fedick\""
   ]
 }
+
+# Build
 
 build {
   sources = [ "source.docker.alpine"]
@@ -28,7 +31,7 @@ build {
       tags       = ["1.0"]
     }
     post-processor "docker-push" {
-      login = false
+      login = true
       login_username = "danfedick"
       login_password = "${var.dockerhub_password}"
     }
