@@ -25,7 +25,12 @@ jobs:
       - name: Build Packer
         env: 
             DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+            DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         shell: bash
         run: |
           cd containers
-          packer build --var "dockerhub_password=$DOCKERHUB_PASSWORD" ./nginx.pkr.hcl 
+          ls -lart
+          packer build \
+            --var "dockerhub_username=$DOCKERHUB_USERNAME" \
+            --var "dockerhub_password=$DOCKERHUB_PASSWORD" \
+            ./nginx.pkr.hcl 
