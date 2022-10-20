@@ -34,5 +34,5 @@ jobs:
           packer build \
             --var "dockerhub_username=$DOCKERHUB_USERNAME" \
             --var "dockerhub_password=$DOCKERHUB_PASSWORD" \
-            --var "push_repo=$PUSH_REPO"            
+            --var "push_repo=$PUSH_REPO" \           
             ./nginx.pkr.hcl 
