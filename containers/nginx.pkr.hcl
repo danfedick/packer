@@ -8,7 +8,7 @@ source "docker" "alpine" {
   image  = "alpine:latest"
   commit = true
   changes = [
-    "USER www"
+    "USER www",
     "ENV HOSTNAME alpine-nginx",
   ]
 }
@@ -16,7 +16,7 @@ source "docker" "alpine" {
 # Build
 
 build {
-  sources = [ "source.docker.alpine"]
+  sources = ["source.docker.alpine"]
 
   provisioner "shell" {
     inline = [
@@ -26,12 +26,12 @@ build {
 
   post-processors {
     post-processor "docker-tag" {
-     # repository = "danfedick/nginx"
+      # repository = "danfedick/nginx"
       repository = var.push_repo
       tags       = ["1.0"]
     }
     post-processor "docker-push" {
-      login = true
+      login          = true
       login_username = var.dockerhub_username
       login_password = var.dockerhub_password
     }
