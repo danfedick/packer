@@ -26,6 +26,7 @@ jobs:
         env: 
             DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
             DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+            PUSH_REPO:          ${{ secrets.PUSH_REPO }}
         shell: bash
         run: |
           cd containers
@@ -33,4 +34,5 @@ jobs:
           packer build \
             --var "dockerhub_username=$DOCKERHUB_USERNAME" \
             --var "dockerhub_password=$DOCKERHUB_PASSWORD" \
+            --var "push_repo=$PUSH_REPO"            
             ./nginx.pkr.hcl 
