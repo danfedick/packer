@@ -30,7 +30,6 @@ jobs:
         shell: bash
         run: |
           cd containers
-          ls -lart
           packer build \
             --var "dockerhub_username=$DOCKERHUB_USERNAME" \
             --var "dockerhub_password=$DOCKERHUB_PASSWORD" \
