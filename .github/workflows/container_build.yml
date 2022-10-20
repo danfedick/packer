@@ -9,8 +9,6 @@ jobs:
   packer:
     runs-on: ubuntu-latest
     name: packer
-    env: 
-      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -25,8 +23,10 @@ jobs:
           sudo apt-get update && sudo apt-get install packer
 
       - name: Build Packer
+        env: 
+            DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         shell: bash
         run: |
           cd containers
-          docker login --username danfedick --password $DOCKERHUB_PASSWORD
+          docker login --username danfedick --password ${DOCKERHUB_PASSWORD}
           packer build ./nginx.pkr.hcl
