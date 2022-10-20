@@ -30,7 +30,7 @@ build {
     post-processor "docker-push" {
       login = false
       login_username = "danfedick"
-      login_password = "${var.docker_password}"
+      login_password = "${var.dockerhub_password}"
     }
   }
 }
