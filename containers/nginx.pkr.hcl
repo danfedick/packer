@@ -2,6 +2,8 @@
 variable "dockerhub_password" { type = string }
 variable "dockerhub_username" { type = string }
 variable "push_repo" { type = string }
+variable "container_tag" { type = string }
+variable "author_name" { type = string }
 
 # Source
 source "docker" "alpine" {
@@ -10,11 +12,12 @@ source "docker" "alpine" {
   changes = [
     "USER www",
     "ENV HOSTNAME alpine-nginx",
+    "LABEL author \"${var.author_name}\"",
+    "LABEL description \"Alpine Nginx Test Image\""
   ]
 }
 
 # Build
-
 build {
   sources = ["source.docker.alpine"]
 
@@ -23,12 +26,12 @@ build {
       "apk add nginx"
     ]
   }
+  
 
   post-processors {
     post-processor "docker-tag" {
-      # repository = "danfedick/nginx"
       repository = "${var.push_repo}"
-      tags       = ["1.0"]
+      tags       = ["${var.container_tag}"]
     }
     post-processor "docker-push" {
       login          = true
