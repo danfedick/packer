@@ -29,8 +29,8 @@ jobs:
             DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
             DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
             PUSH_REPO:          ${{ secrets.PUSH_REPO }}
-            CONTAINER_TAG: "0.1"
-            AUTHOR_NAME: "Dan Fedick"
+            CONTAINER_TAG: 0.1
+            AUTHOR_NAME: Dan Fedick
         shell: bash
         run: |
           cd containers
