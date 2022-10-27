@@ -29,9 +29,9 @@ jobs:
             DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
             DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
             PUSH_REPO:          ${{ secrets.PUSH_REPO }}
-            CONTAINER_TAG: 0.1
-            AUTHOR_NAME: Dan Fedick
+            CONTAINER_TAG:      ${{ secrets.CONTAINER_TAG }}
+            AUTHOR_NAME:        ${{ secrets.AUTHOR_NAME }}
         shell: bash
         run: |
           cd containers
-          packer build --var "dockerhub_username=$DOCKERHUB_USERNAME" --var "dockerhub_password=$DOCKERHUB_PASSWORD" --var "push_repo=$PUSH_REPO" --var "CONTAINER_TAG=$CONTAINER_TAG" --var "AUTHOR_NAME=\"$AUTHOR_NAME\""./nginx.pkr.hcl 
+          packer build --var "dockerhub_username=$DOCKERHUB_USERNAME" --var "dockerhub_password=$DOCKERHUB_PASSWORD" --var "push_repo=$PUSH_REPO" --var "CONTAINER_TAG=$CONTAINER_TAG" --var "AUTHOR_NAME=$AUTHOR_NAME"./nginx.pkr.hcl 
