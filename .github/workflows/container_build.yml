@@ -4,6 +4,8 @@ name: NGINX Container Build
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   packer:
