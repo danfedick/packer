@@ -34,4 +34,4 @@ jobs:
         shell: bash
         run: |
           cd containers
-          packer build --var "dockerhub_username=$DOCKERHUB_USERNAME" --var "dockerhub_password=$DOCKERHUB_PASSWORD" --var "push_repo=$PUSH_REPO" --var "CONTAINER_TAG=$CONTAINER_TAG" --var "AUTHOR_NAME=$AUTHOR_NAME" ./nginx.pkr.hcl 
+          packer build --var "dockerhub_username=$DOCKERHUB_USERNAME" --var "dockerhub_password=$DOCKERHUB_PASSWORD" --var "push_repo=$PUSH_REPO" --var "container_tag=$CONTAINER_TAG" --var "author_name=$AUTHOR_NAME" ./nginx.pkr.hcl 
