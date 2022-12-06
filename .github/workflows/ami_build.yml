@@ -12,11 +12,9 @@ jobs:
     env:
       access_key: ${{ secrets.ACCESS_KEY }}
       secret_key: ${{ secrets.SECRET_KEY }}
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
     # Install Packer
       - name: Install Packer
         run: |
@@ -25,11 +23,19 @@ jobs:
           curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
           sudo apt-get update && sudo apt-get install packer
+
       - name: Init Packer
+        # env:
+        #   access_key: ${{ secrets.ACCESS_KEY }}
+        #   secret_key: ${{ secrets.SECRET_KEY }}        
+        shell: bash
         run: |
           cd aws
           packer init .
       - name: Build Packer
+        # env:
+        #   access_key: ${{ secrets.ACCESS_KEY }}
+        #   secret_key: ${{ secrets.SECRET_KEY }}        
         run: |
           packer build \
             -var "access_key=${{ secrets.ACCESS_KEY }}"       \
