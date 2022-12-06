@@ -1,33 +1,35 @@
 ---
 
-name: AWS Creds for GitHub Action via Doormat
+name: Ubuntu 20.04 AMI Build
+
 on:
   push:
-    branches:
-      - main
-permissions:
-  contents: read
-  id-token: write
+
 jobs:
-  doormat_creds_demo:
+  packer:
     runs-on: ubuntu-latest
+    name: packer
+    env:
+      access_key: ${{ secrets.ACCESS_KEY }}
+      secret_key: ${{ secrets.SECRET_KEY }}
+
     steps:
-      - id: repo-checkout
-        uses: actions/checkout@v1
-      - id: doormat-action
-        uses: hashicorp/doormat-action@v1
-        with:
-          aws-role-arn: arn:aws:iam::711129375688:role/se_demos_dev-developer
-      - run: |
-          aws sts get-caller-identity
-          aws ec2 describe-regions
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+    # Install Packer
+      - name: Install Packer
+        run: |
           sudo apt-get update 
           sudo apt-get install -y curl unzip
           curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
           sudo apt-get update && sudo apt-get install packer
+      - name: Init Packer
+        run: |
           packer init .
-      - run: |
+      - name: Build Packer
+        run: |
           packer build \
             -var "access_key=${{ secrets.ACCESS_KEY }}"       \
             -var "secret_key=${{ secrets.SECRET_KEY }}"       \
