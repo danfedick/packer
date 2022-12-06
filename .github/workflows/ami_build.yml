@@ -27,6 +27,7 @@ jobs:
           sudo apt-get update && sudo apt-get install packer
       - name: Init Packer
         run: |
+          cd aws
           packer init .
       - name: Build Packer
         run: |
