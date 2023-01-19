@@ -42,7 +42,7 @@ This is the Ubuntu 20.04 image being published to NGC-JCO Packer Registry.
       "organization" = "demoland",
       "team"         = "the special team",
       "os"           = "Ubuntu 20.04"
-      "iteration"    = "0.2"
+      "iteration"    = "0.3"
     }
   }
   sources = [
