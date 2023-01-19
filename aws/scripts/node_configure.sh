@@ -17,7 +17,7 @@ install() {
     error "$1 was not installed correctly"
     exit 7
   else
-    success "$1 was installed successfully"
+    echo "$1 was installed successfully"
     exit 0
   fi
 }
