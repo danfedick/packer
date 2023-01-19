@@ -7,6 +7,11 @@ packer {
   }
 }
 
+variable "version" {
+  type    = string
+  default = "1.0.1"
+}
+
 data "amazon-ami" "ubuntu-focal-west" {
   region = "us-west-2"
   filters = {
@@ -24,7 +29,7 @@ source "amazon-ebs" "ubuntu-focal-west" {
   instance_type  = "t2.small"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
-  ami_name       = "packer_AWS_UBUNTU_20.04_{{timestamp}}"
+  ami_name       = "packer_AWS_UBUNTU_20.04_{{timestamp}}_v${var.version}"
 }
 
 build {
