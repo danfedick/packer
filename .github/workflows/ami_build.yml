@@ -14,7 +14,7 @@ jobs:
       - id: repo-checkout
         uses: actions/checkout@v1
       - id: doormat-action
-        uses: hashicorp/doormat-action@v1
+        uses: hashicorp/doormat-action
         with:
           aws-role-arn: arn:aws:sts::548514454989:assumed-role/aws_daniel.fedick_test-developer/daniel.fedick@hashicorp.com
       - run: aws sts get-caller-identity
