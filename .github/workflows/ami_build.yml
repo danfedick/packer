@@ -1,32 +1,52 @@
 ---
-
-name: Ubuntu 20.04 AMI Build
-
+name: Ubuntu 20.04 AMI with Doormat
 on:
   push:
-
+    branches:
+      - main
+permissions:
+  contents: read
+  id-token: write
 jobs:
-  packer:
+  doormat_creds_demo:
     runs-on: ubuntu-latest
-    name: packer
-    env:
-      access_key: ${{ secrets.ACCESS_KEY }}
-      secret_key: ${{ secrets.SECRET_KEY }}
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - id: repo-checkout
+        uses: actions/checkout@v1
+      - id: doormat-action
+        uses: hashicorp/doormat-action@v1
+        with:
+          aws-role-arn: arn:aws:sts::548514454989:assumed-role/aws_daniel.fedick_test-developer/daniel.fedick@hashicorp.com
+      - run: aws sts get-caller-identity
+      - run: aws ec2 describe-regions
 
-    # Install Packer
-      - name: Install Packer
-        working-directory: ./aws
-        run: |
-          sudo apt-get update 
-          sudo apt-get install -y curl unzip
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update && sudo apt-get install packer
-          packer init .
-          packer build \
-            -var "access_key=${{ secrets.ACCESS_KEY }}"       \
-            -var "secret_key=${{ secrets.SECRET_KEY }}"       \
-            ./ubuntu_20_04.pkr.hcl
+# name: Ubuntu 20.04 AMI Build
+
+# on:
+#   push:
+
+# jobs:
+#   packer:
+#     runs-on: ubuntu-latest
+#     name: packer
+#     env:
+#       access_key: ${{ secrets.ACCESS_KEY }}
+#       secret_key: ${{ secrets.SECRET_KEY }}
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v3
+
+#     # Install Packer
+#       - name: Install Packer
+#         working-directory: ./aws
+#         run: |
+#           sudo apt-get update 
+#           sudo apt-get install -y curl unzip
+#           curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+#           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+#           sudo apt-get update && sudo apt-get install packer
+#           packer init .
+#           packer build \
+#             -var "access_key=${{ secrets.ACCESS_KEY }}"       \
+#             -var "secret_key=${{ secrets.SECRET_KEY }}"       \
+#             ./ubuntu_20_04.pkr.hcl
