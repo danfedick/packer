@@ -19,6 +19,7 @@ jobs:
           aws-role-arn: arn:aws:sts::548514454989:assumed-role/aws_daniel.fedick_test-developer/daniel.fedick@hashicorp.com
       - run: aws sts get-caller-identity
       - run: aws ec2 describe-regions
+      - run: sudo apt-get update 
 
 # name: Ubuntu 20.04 AMI Build
 
